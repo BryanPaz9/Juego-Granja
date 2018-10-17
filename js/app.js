@@ -3,19 +3,16 @@ var canvas = document.getElementById('fondo');
 var lapiz = canvas.getContext('2d');
 var x= random(0,5)*80;
 var y = random(0,5)*80;
-var y1 = 0;
-var y2 = 0;
-var x1 = 0;
-var x2 =0;
+var cont =0;
 const DIMENSION = 80;
 var randomx = random(0,5);
 var randomy = random(0,5);
 var randomy1 = random(0,5);
 var randomx1 = random(0,5);
+var sano1 = random (0,cont);
 randomC = random(1,6);
 randomV = random(1,6);
 var matriz = new Array(6);  
-
 var fondo = {
     url: './imagenes/tile.png',
     imagen: Image,    
@@ -70,7 +67,6 @@ iniciarMatriz();
 inicializarCerdo();
 inicializarVacas();
 dibujar();
-
 var tecla ={
     LEFT: 37,
     UP: 38,
@@ -84,20 +80,12 @@ function dibujar(){
     if(fondo.cargaOk){
         lapiz.drawImage(fondo.imagen,0,0);
     }
-    // if(vaca.cargaOk == true){
-    //    x1 = randomx*DIMENSION;
-    //    y1 = randomy*DIMENSION;
-    //     lapiz.drawImage(vaca.imagen,x1,y1);
-    // }
-    // if(cerdo.cargaOk == true){
-    //     x2 = randomx1*DIMENSION;
-    //     y2 = randomy1*DIMENSION;
-    //     lapiz.drawImage(cerdo.imagen,x2,y2);  
-    // }
+
     dibujarMatriz();
      if(cuchillo.cargaOk){
         lapiz.drawImage(cuchillo.imagen,x,y);
     }
+    
 }
 function movimiento(evento){
     
@@ -129,9 +117,13 @@ function movimiento(evento){
         }
             break;
         case tecla.ENTER:   
-        console.log(matriz);
-        // alert(matriz[2]);
-        break;
+        // console.log(matriz);
+        // alert((x/DIMENSION)+" "+(y/DIMENSION));
+        alert(cont);
+        if (cont ==1 || cont ==2 || cont==3){
+            alert("Es enfermo");
+        }
+            break;
     }
 }
 
@@ -156,6 +148,7 @@ function inicializarVacas(){
         var columna = random(0,5);
         if(matriz[fila][columna] == 'x'){
             matriz[fila][columna] ='v';
+            cont +=1;
         }
     }
 }
@@ -167,6 +160,7 @@ function inicializarCerdo(){
         var columna = random(0,5);
         if(matriz[fila][columna]== 'x'){
             matriz[fila][columna] = 'c'; 
+            cont +=1;
         }
     }
 }
