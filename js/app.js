@@ -11,27 +11,29 @@ var vaca ={
     url: './imagenes/vaca.png',
     imagen: Image,
     cargaOk: false
-}
+};
 
 var cerdo = {
     url: './imagenes/cerdo.png',
     imagen: Image,
     cargaOk: false
-}
+};
 
 var cuchillo = {
     url: './imagenes/Cuchillo.png',
     imagen: Image,
     cargaOk: false
 
-}
+};
 
 fondo.imagen = new Image();
 vaca.imagen = new Image();  
 cerdo.imagen = new Image();
+cuchillo.imagen = new Image();
 fondo.imagen.src = fondo.url;
 vaca.imagen.src = vaca.url;
 cerdo.imagen.src = cerdo.url;
+cuchilo.imagen.src = cuchillo.url;
 
 fondo.imagen.addEventListener("load",function(){
     fondo.cargaOk = true;
@@ -52,20 +54,18 @@ cuchillo.imagen.addEventListener("load",function(){
 
 function dibujar(){
     if(fondo.cargaOk == true){
-    lapiz.drawImage(fondo.imagen,0,0);
+        lapiz.drawImage(fondo.imagen,0,0);
 
     }
     if(vaca.cargaOk == true){
 
-    lapiz.drawImage(vaca.imagen,150,100);
+        lapiz.drawImage(vaca.imagen,150,100);
     }
     if(cerdo.cargaOk == true){
-    lapiz.drawImage(cerdo.imagen,300,200);  
+        lapiz.drawImage(cerdo.imagen,300,200);  
     }
     if(cuchillo.cargaOk == true){
-    lapiz.drawImage(cuchillo.imagen,250,400);
-
+        lapiz.drawImage(cuchillo.imagen,0,0);
     }
-
 }
 
