@@ -5,10 +5,10 @@ var x= random(0,5)*80;
 var y = random(0,5)*80;
 // var cont =0;
 const DIMENSION = 80;
-var randomx = random(0,5);
-var randomy = random(0,5);
-var randomy1 = random(0,5);
-var randomx1 = random(0,5);
+// var randomx = random(0,5);
+// var randomy = random(0,5);
+// var randomy1 = random(0,5);
+// var randomx1 = random(0,5);
 // var sano1 = random (0,cont);
 randomC = random(1,6);
 randomV = random(1,6);
@@ -124,15 +124,18 @@ function movimiento(evento){
         // if (cont ==1 || cont ==2 || cont==3){
         //     alert(matriz.length);
         // }
-        alert(matriz);
-        if(matriz[x][y]== 'v'){
-            alert('vaca');
+        //  alert(x);
+        // if(matriz[x][y]== 'v'){
+        //     alert('vaca');
+        // }
+        //     else if(matriz[x][y]){
+        //         alert('cerdo');
+        //     }
+        // alert(matriz);
+        animales();
+        console.log(matriz);
         }
-            else if(matriz[x][y]){
-                alert('cerdo');
-            }
-        }
-    }
+     }
 
 function random(minimo, maximo){
     return Math.floor(Math.random()*(maximo -minimo+1 ))+minimo;
@@ -150,25 +153,34 @@ function iniciarMatriz(){
 
 function inicializarVacas(){
     var numero = random(0,5);
-    var sano = random(0,numero);
+    var sana = random(0,numero);
     var cont = 0;
     for(var i = 0; i<= numero;i++){
         var fila = random(0,5);
         var columna = random(0,5);
         if(matriz[fila][columna] == 'x'){
-            matriz[fila][columna] ='v';
+            matriz[fila][columna] ='v'+cont;
+            cont++;
+        }
+        if(matriz[fila][columna]== 'v'+sana){
+            matriz[fila][columna]= 'vaca sana';
         }
     }
 }
 
 function inicializarCerdo(){
     var numero = random(0,5);
-    var sano = random(0,sano);
+    var sano = random(0,numero);
+    var cont =0;
     for(var i = 0; i<= numero; i++){
         var fila = random(0,5);
         var columna = random(0,5);
         if(matriz[fila][columna]== 'x'){
-            matriz[fila][columna] = 'c'; 
+            matriz[fila][columna] = 'c'+cont;
+            cont++;  
+        }
+        if(matriz[fila][columna]== 'c'+sano){
+            matriz[fila][columna] = 'cerdo sano';
         }
     }
 }
@@ -176,9 +188,9 @@ function inicializarCerdo(){
 function dibujarMatriz(){
     for(var i = 0; i<matriz.length; i++){
         for(var j =0; j<matriz.length;j++){
-            if(matriz[i][j]=='v'){
+            if(matriz[i][j]=='v0'||matriz[i][j]=='v1'||matriz[i][j]=='v2'||matriz[i][j]=='v3'||matriz[i][j]=='v4'||matriz[i][j]=='v5'||matriz[i][j]=='vaca sana'){
                 lapiz.drawImage(vaca.imagen ,i*DIMENSION, j*DIMENSION);
-            }else if(matriz[i][j]=='c'){
+            }else if(matriz[i][j]=='c0'||matriz[i][j]=='c1'||matriz[i][j]=='c2'||matriz[i][j]=='c3'||matriz[i][j]=='c4'||matriz[i][j]=='c5'||matriz[i][j]=='cerdo sano'){
                 lapiz.drawImage(cerdo.imagen,i*DIMENSION,j*DIMENSION);
             }
         }
@@ -186,13 +198,26 @@ function dibujarMatriz(){
 }
 function animales(){
     var cont = 0;
+    var animal = 'x';
     for(var i =0; i<matriz.length; i++){
         for(var j = 0; j<matriz.length;j++){
-            if(matriz[i][j]== 'v'){
-                alert('vaca');
-            }else if(matriz[i][j]== 'c'){
-                alert('cerdo');
+            if(matriz[(x/DIMENSION)][(y/DIMENSION)]== 'v0'||matriz[(x/DIMENSION)][(y/DIMENSION)]== 'v1'||matriz[(x/DIMENSION)][(y/DIMENSION)]== 'v2'||matriz[(x/DIMENSION)][(y/DIMENSION)]== 'v3'|| matriz[(x/DIMENSION)][(y/DIMENSION)]== 'v4'||[(x/DIMENSION)][(y/DIMENSION)]== 'v5'){
+                animal = 'vaca';
+            }else if(matriz[(x/DIMENSION)][(y/DIMENSION)]== 'c0'||matriz[(x/DIMENSION)][(y/DIMENSION)]== 'c1'|matriz[(x/DIMENSION)][(y/DIMENSION)]== 'c2'||matriz[(x/DIMENSION)][(y/DIMENSION)]== 'c3'||matriz[(x/DIMENSION)][(y/DIMENSION)]== 'c4'||matriz[(x/DIMENSION)][(y/DIMENSION)]== 'c5'){
+                animal = 'cerdo malo >:v';
+            }
+            else if(matriz[x/DIMENSION][y/DIMENSION]=='cerdo sano'){
+                animal = 'cerdo sano :D';
+            }else if(matriz[x/DIMENSION][y/DIMENSION]== 'vaca sana'){
+                animal = 'vaca sana';
+        }else{
+                animal = 'no hay animal xd, solo pasto';
             }
         }
     }
+    return alert(animal);
+}
+function sanos(){
+    var sano = inicializarCerdo();
+    alert(sano);
 }
