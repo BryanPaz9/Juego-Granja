@@ -3,13 +3,13 @@ var canvas = document.getElementById('fondo');
 var lapiz = canvas.getContext('2d');
 var x= random(0,5)*80;
 var y = random(0,5)*80;
-var cont =0;
+// var cont =0;
 const DIMENSION = 80;
 var randomx = random(0,5);
 var randomy = random(0,5);
 var randomy1 = random(0,5);
 var randomx1 = random(0,5);
-var sano1 = random (0,cont);
+// var sano1 = random (0,cont);
 randomC = random(1,6);
 randomV = random(1,6);
 randomSano = random(1,3);
@@ -125,9 +125,14 @@ function movimiento(evento){
         //     alert(matriz.length);
         // }
         alert(matriz);
-            break;
+        if(matriz[x][y]== 'v'){
+            alert('vaca');
+        }
+            else if(matriz[x][y]){
+                alert('cerdo');
+            }
+        }
     }
-}
 
 function random(minimo, maximo){
     return Math.floor(Math.random()*(maximo -minimo+1 ))+minimo;
@@ -175,6 +180,18 @@ function dibujarMatriz(){
                 lapiz.drawImage(vaca.imagen ,i*DIMENSION, j*DIMENSION);
             }else if(matriz[i][j]=='c'){
                 lapiz.drawImage(cerdo.imagen,i*DIMENSION,j*DIMENSION);
+            }
+        }
+    }
+}
+function animales(){
+    var cont = 0;
+    for(var i =0; i<matriz.length; i++){
+        for(var j = 0; j<matriz.length;j++){
+            if(matriz[i][j]== 'v'){
+                alert('vaca');
+            }else if(matriz[i][j]== 'c'){
+                alert('cerdo');
             }
         }
     }
