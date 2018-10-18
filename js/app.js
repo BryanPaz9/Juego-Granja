@@ -12,6 +12,7 @@ var randomx1 = random(0,5);
 var sano1 = random (0,cont);
 randomC = random(1,6);
 randomV = random(1,6);
+randomSano = random(1,3);
 var matriz = new Array(6);  
 var fondo = {
     url: './imagenes/tile.png',
@@ -118,11 +119,12 @@ function movimiento(evento){
             break;
         case tecla.ENTER:   
         // console.log(matriz);
-        // alert((x/DIMENSION)+" "+(y/DIMENSION));
-        alert(cont);
-        if (cont ==1 || cont ==2 || cont==3){
-            alert("Es enfermo");
-        }
+        // alert((x/DIMENSION)+" "+(y/DIMENSION))   ;
+        // alert(matriz[1]);
+        // if (cont ==1 || cont ==2 || cont==3){
+        //     alert(matriz.length);
+        // }
+        alert(matriz);
             break;
     }
 }
@@ -143,24 +145,25 @@ function iniciarMatriz(){
 
 function inicializarVacas(){
     var numero = random(0,5);
+    var sano = random(0,numero);
+    var cont = 0;
     for(var i = 0; i<= numero;i++){
         var fila = random(0,5);
         var columna = random(0,5);
         if(matriz[fila][columna] == 'x'){
             matriz[fila][columna] ='v';
-            cont +=1;
         }
     }
 }
 
 function inicializarCerdo(){
     var numero = random(0,5);
+    var sano = random(0,sano);
     for(var i = 0; i<= numero; i++){
         var fila = random(0,5);
         var columna = random(0,5);
         if(matriz[fila][columna]== 'x'){
             matriz[fila][columna] = 'c'; 
-            cont +=1;
         }
     }
 }
@@ -169,8 +172,7 @@ function dibujarMatriz(){
     for(var i = 0; i<matriz.length; i++){
         for(var j =0; j<matriz.length;j++){
             if(matriz[i][j]=='v'){
-                // lapiz.drawImage(vaca.imagen ,i*DIMENSION, j*DIMENSION);
-                lapiz.drawImage(vaca.imagen,i*80,j*80);
+                lapiz.drawImage(vaca.imagen ,i*DIMENSION, j*DIMENSION);
             }else if(matriz[i][j]=='c'){
                 lapiz.drawImage(cerdo.imagen,i*DIMENSION,j*DIMENSION);
             }
