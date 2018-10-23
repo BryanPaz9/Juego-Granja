@@ -3,13 +3,7 @@ var canvas = document.getElementById('fondo');
 var lapiz = canvas.getContext('2d');
 var x= random(0,5)*80;
 var y = random(0,5)*80;
-// var cont =0;
 const DIMENSION = 80;
-// var randomx = random(0,5);
-// var randomy = random(0,5);
-// var randomy1 = random(0,5);
-// var randomx1 = random(0,5);
-// var sano1 = random (0,cont);
 randomC = random(1,6);
 randomV = random(1,6);
 randomSano = random(1,3);
@@ -28,7 +22,7 @@ var vaca ={
 
 var cerdo = {
     url: './imagenes/cerdo.png',
-    imagen: Image,
+    imagen: Image, 
     cargaOk: false
 };
 
@@ -90,10 +84,8 @@ function dibujar(){
 }
 function movimiento(evento){
     
-    // console.log(evento);
     switch(evento.keyCode){
         case tecla.LEFT:
-            // alert("Izquierda");
             if(x!=0){
             x-= DIMENSION;
             dibujar();
@@ -118,20 +110,6 @@ function movimiento(evento){
         }
             break;
         case tecla.ENTER:   
-        // console.log(matriz);
-        // alert((x/DIMENSION)+" "+(y/DIMENSION))   ;
-        // alert(matriz[1]);
-        // if (cont ==1 || cont ==2 || cont==3){
-        //     alert(matriz.length);
-        // }
-        //  alert(x);
-        // if(matriz[x][y]== 'v'){
-        //     alert('vaca');
-        // }
-        //     else if(matriz[x][y]){
-        //         alert('cerdo');
-        //     }
-        // alert(matriz);
         animales();
         console.log(matriz);
         }
@@ -184,7 +162,6 @@ function inicializarCerdo(){
         }
     }
 }
-
 function dibujarMatriz(){
     for(var i = 0; i<matriz.length; i++){
         for(var j =0; j<matriz.length;j++){
